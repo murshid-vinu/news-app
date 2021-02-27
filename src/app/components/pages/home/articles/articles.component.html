@@ -1,0 +1,23 @@
+<div class="d-flex">
+    <div *ngIf="viewArticles.length > 0">
+        <button (click)="changePage('previous')" *ngIf="currentPage > 1">Previous</button>
+    </div>
+
+    <section class="board__news">
+        <a class="news--item" *ngFor="let article of viewArticles" (click)="openArticle(article)">
+            <p class="title">
+                {{article.title}}
+            </p>
+            <p *ngIf="article.thumbnail_standard">
+                <img [src]="article.thumbnail_standard" />
+            </p>
+            <p class="date">
+                {{article.abstract}}
+            </p>
+        </a>
+    </section>
+    <div *ngIf="viewArticles.length > 0">
+
+        <button (click)="changePage('next')" *ngIf="currentPage < noOfPages">Next</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="vid-container">
+    <div class="inner-container">
+        <div class="box">
+            <h1>Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <input type="text" placeholder="Email" formControlName="email"
+                    [class.invalid]="form.email.touched && form.email.errors">
+                <input type="password" placeholder="Password" formControlName="password"
+                    [class.invalid]="form.password.touched && form.password.errors">
+                <button>Login</button>
+            </form>
+            <p><a routerLink="/register"><span>Sign Up</span></a></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+.profile{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.email-section{
+    display: flex;
+}

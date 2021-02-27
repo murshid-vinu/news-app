@@ -1,0 +1,60 @@
+<!-- <div class="profile">
+    <div class="email-section">
+        {{email}}
+    </div>
+    <div class="display-name">
+        {{displayName}}
+        <button (click)="changeUsername = !changeUsername">Change username</button>
+    </div>
+
+    <div *ngIf="changeUsername">
+        <form [formGroup]="displayNameForm" (ngSubmit)="changeUserName()">
+            <input type="text" formControlName="displayName"
+                [class.invalid]="usernameForm.displayName.touched && usernameForm.displayName.errors">
+            <button>Update</button>
+        </form>
+    </div>
+
+    <button (click)="changePassord = !changePassord">Change password</button>
+
+    <div *ngIf="changePassord">
+        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+            <input type="password" formControlName="oldPassword" placeholder="Old password"
+                [class.invalid]="passwordForm.oldPassword.touched && passwordForm.oldPassword.errors">
+            <input type="password" formControlName="password" placeholder="Password"
+                [class.invalid]="passwordForm.password.touched && passwordForm.password.errors">
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm password"
+                [class.invalid]="passwordForm.confirmPassword.touched && passwordForm.confirmPassword.errors || changePasswordForm.errors?.misMatch">
+            <button>Update</button>
+        </form>
+    </div>
+
+</div> -->
+<div class="vid-container">
+    <div class="inner-container">
+        <div class="box">
+            <h1>{{email}}</h1>
+            <h1>{{displayName}}</h1>
+            <button (click)="changeUsername = !changeUsername">Change username</button>
+            <form [formGroup]="displayNameForm" (ngSubmit)="changeUserName()" *ngIf="changeUsername">
+                <input type="text" formControlName="displayName"
+                    [class.invalid]="usernameForm.displayName.touched && usernameForm.displayName.errors">
+                <button>Update</button>
+            </form>
+            <button (click)="changePassord = !changePassord">Change password</button>
+
+            <div *ngIf="changePassord">
+                <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+                    <input type="password" formControlName="oldPassword" placeholder="Old password"
+                        [class.invalid]="passwordForm.oldPassword.touched && passwordForm.oldPassword.errors">
+                    <input type="password" formControlName="password" placeholder="Password"
+                        [class.invalid]="passwordForm.password.touched && passwordForm.password.errors">
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm password"
+                        [class.invalid]="passwordForm.confirmPassword.touched && passwordForm.confirmPassword.errors || changePasswordForm.errors?.misMatch">
+                    <button>Update</button>
+                </form>
+            </div>
+            <button (click)="deleteAccount()">Delete account</button>
+        </div>
+    </div>
+</div>

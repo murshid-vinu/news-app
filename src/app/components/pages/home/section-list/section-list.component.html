@@ -1,0 +1,12 @@
+<!-- <div >
+    <div *ngFor="let section of totalSections" (click)="selectSection(section)">
+        {{section.display_name}}
+    </div>
+</div> -->
+<aside>
+    <!-- <p> Menu </p> -->
+    <a *ngFor="let section of totalSections" (click)="selectSection(section)">
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      {{section.display_name}}
+    </a>
+  </aside>

@@ -1,0 +1,19 @@
+<div class="vid-container">
+    <div class="inner-container">
+        <div class="box">
+            <h1>Register</h1>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <input type="email" formControlName="email" placeholder="Email"
+                    [class.invalid]="form.email.touched && form.email.errors">
+                <input type="password" formControlName="password" placeholder="Password"
+                    [class.invalid]="form.password.touched && form.password.errors">
+                <input type="password" formControlName="confirmPassword" placeholder="Confirm password"
+                    [class.invalid]="form.confirmPassword.touched && form.confirmPassword.errors || registerForm.errors?.misMatch">
+                <input type="text" formControlName="displayName" placeholder="Display name"
+                    [class.invalid]="form.displayName.touched && form.displayName.errors">
+                <button>Register</button>
+            </form>
+            <p><a routerLink="/login"><span>Login</span></a></p>
+        </div>
+    </div>
+</div>
