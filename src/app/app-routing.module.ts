@@ -29,7 +29,11 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./components/pages/profile/profile.module').then(m => m.ProfileModule)
-      }
+      },
+      {
+        path: 'read-later',
+        loadChildren: () => import('./components/pages/read-later/read-later.module').then(m => m.ReadLaterModule)
+      },
     ]
   },
 

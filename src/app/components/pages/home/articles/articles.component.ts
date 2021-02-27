@@ -1,4 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -9,7 +10,6 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class ArticlesComponent implements OnInit, OnDestroy {
 
-  totalArticles = [];
   currentArticles = [];
   viewArticles = [];
   limit = 10;
@@ -17,7 +17,8 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   noOfPages = 0;
   subscription: Subscription;
   constructor(private homeService: HomeService,
-    @Inject('Articles') public allArticles: any[]) { }
+    @Inject('Articles') public allArticles: any[],
+    private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllArticles();
@@ -27,9 +28,8 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   getAllArticles() {
-    this.subscription = this.homeService.getArticles({ page: this.currentPage }).subscribe(_response => {
+    this.subscription = this.homeService.getArticles().subscribe(_response => {
       if (_response.status == 'OK') {
-        this.totalArticles = _response.results;
         this.allArticles = _response.results;
       }
     })
@@ -64,6 +64,19 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
   openArticle(article) {
     window.open(article.url);
+  }
+
+  readLater(article) {
+    this.homeService.addToReadLater(article.slug_name).subscribe((_response: any) => {
+      if (_response.status) {
+        this.toastrService.success('Added to read later');
+      } else {
+        if (_response.message)
+          this.toastrService.error(_response.message);
+        else
+          this.toastrService.error('Please try again');
+      }
+    })
   }
 
   ngOnDestroy() {

@@ -1,1 +1,1 @@
-export const allArticles = []
+export var allArticles = []

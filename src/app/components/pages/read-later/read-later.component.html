@@ -9,16 +9,17 @@
             <p class="title" (click)="openArticle(article)">
                 {{article.title}}
             </p>
-            <p *ngIf="article.thumbnail_standard" (click)="openArticle(article)">
-                <img [src]="article.thumbnail_standard" />
-            </p>
             <p class="date">
                 {{article.abstract}}
             </p>
-            <button (click)="readLater(article)">Read later</button>
+            <button (click)="removeReadLater(article)">Remove</button>
         </a>
+        <div *ngIf="viewArticles.length < 1">
+            No data
+        </div>
     </section>
     <div *ngIf="viewArticles.length > 0">
         <button (click)="changePage('next')" *ngIf="currentPage < noOfPages">Next</button>
     </div>
+
 </div>
